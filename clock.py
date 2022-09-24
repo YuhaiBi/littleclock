@@ -1,0 +1,54 @@
+from turtle import*
+from time import*
+title("时钟")
+tracer(False)
+def b():
+    tracer(False)
+    h_t.reset()
+    mt.reset()
+    st.reset()
+    h_t.pensize(8)
+    h_t.hideturtle()
+    mt.pensize(4)
+    st.pensize(2)
+    h_t.speed(0)
+    mt.speed(0)
+    st.speed(0)
+    localtime().tm_hour
+    localtime().tm_min
+    localtime().tm_sec
+    h=localtime().tm_hour
+    m=localtime().tm_min
+    s=localtime().tm_sec
+    hd=-360/(12*60)*(60*h+m)+90
+    md=-360/60*m+90
+    sd=-360/60*s+90
+    h_t.seth(hd)
+    mt.seth(md)
+    st.seth(sd)
+    st.fd(180)
+    mt.fd(100)
+    h_t.fd(50)
+    tracer(True)
+    ontimer(b,500)
+h_t=Turtle()
+mt=Turtle()
+st=Turtle()
+pu()
+hideturtle()
+goto(0,-200)
+pd()
+color('#ffac00','#ffff00')
+begin_fill()
+pensize(30)
+circle(200)
+end_fill()
+color('#ffffff')
+pu()
+for hour in [12,1,2,3,4,5,6,7,8,9,10,11]:
+    goto(0,-9)
+    seth(-hour*30+90)
+    fd(198)
+    write(str(hour),False,'center',('黑体',18,'normal'))
+b()
+done()
